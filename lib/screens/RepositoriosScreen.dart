@@ -26,10 +26,17 @@ class RepositoriosScreen extends StatelessWidget {
   _body(context) {
     return Consumer<RepositoriosProvider>(
       builder: (context, reposProvider, child) {
-        return ListView.builder(itemBuilder: (context, index) =>
-            ReposItem(reposProvider.repos[index]),
+        if(reposProvider.loading){
+          return Center(child: CircularProgressIndicator(),);
+        }else if(reposProvider.error){
+          return Center(child: Text(reposProvider.msg),);
+        }else{
+          return ListView.builder(itemBuilder: (context, index) =>
+              ReposItem(reposProvider.repos[index]),
             itemCount: reposProvider.tamanhoListaDeRepos(),
-        );
+          );
+        }
+
       },
     );
   }

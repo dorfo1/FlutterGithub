@@ -15,7 +15,7 @@ class UserInformation extends StatelessWidget {
           return Column(
             children: <Widget>[
               Image.network(userProvider.user.avatarUrl,height: 150,),
-              Text(userProvider.user.name ?? "Não informado"),
+              Text(userProvider.user.name ?? "Nome não informado"),
               Text("Repositórios : ${userProvider.user.publicRepos}"),
               Text("Seguidores : ${userProvider.user.followers}"),
               Text("Seguindo : ${userProvider.user.following}"),
